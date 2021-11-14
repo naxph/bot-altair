@@ -14,13 +14,13 @@ DISCORD_TOKEN = os.getenv("discord_token")
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='!',intents=intents)
+bot = commands.Bot(command_prefix='altair!',intents=intents)
 
 #Download audio with youtube_dl
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 ytdl_format_options = {
-    'format': 'bestaudio/best',
+    'format': 'worstaudio',
     'restrictfilenames': True,
     'noplaylist': True,
     'nocheckcertificate': True,
@@ -74,7 +74,7 @@ async def leave(ctx):
         await ctx.send("The bot is not connected to a voice channel.")
 
 #play,pause,resume,stop
-@bot.command(name='play_song', help='To play song')
+@bot.command(name='play', help='To play song')
 async def play(ctx,url):
     try :
         server = ctx.message.guild
