@@ -3,8 +3,8 @@ import discord
 from discord.ext import commands,tasks
 import os
 from dotenv import load_dotenv
-import youtube_dl
 import asyncio
+import yt_dlp
 
 
 load_dotenv()
@@ -17,7 +17,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='altair!',intents=intents)
 
 #Download audio with youtube_dl
-youtube_dl.utils.bug_reports_message = lambda: ''
+yt_dlp.utils.bug_reports_message = lambda: ''
 
 ytdl_format_options = {
     'format': 'worstaudio',
@@ -36,7 +36,7 @@ ffmpeg_options = {
     'options': '-vn'
 }
 
-ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
+ytdl = yt_dlp.YoutubeDL(ytdl_format_options)
 
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
